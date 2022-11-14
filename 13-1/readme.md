@@ -135,16 +135,32 @@ PORT     STATE SERVICE     REASON         VERSION
 6667/tcp open  irc         syn-ack ttl 64 UnrealIRCd
 8009/tcp open  ajp13       syn-ack ttl 64 Apache Jserv (Protocol v1.3)
 8180/tcp open  http        syn-ack ttl 64 Apache Tomcat/Coyote JSP engine 1.1
-
 ```
+
 - **FIN**
   - `nmap -sF -sV -T4 -v --reason 192.168.1.70`
     - как sS но с другими флагами TCP = только TCP FIN бит
     - сервер отвечает активно, полно и быстро
+    - другая причина доступности порта
+```sh
+Nmap done: 1 IP address (1 host up) scanned in 13.19 seconds
+
+Host is up, received arp-response (0.0049s latency).
+Not shown: 977 closed tcp ports (reset)
+PORT     STATE SERVICE     REASON       VERSION
+21/tcp   open  ftp         tcp-response vsftpd 2.3.4
+22/tcp   open  ssh         tcp-response OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)
+…
+8009/tcp open  ajp13       tcp-response Apache Jserv (Protocol v1.3)
+8180/tcp open  http        tcp-response Apache Tomcat/Coyote JSP engine 1.1
+```
+
 - **Xmas**
   - `nmap -sX -sV -T4 -v --reason 192.168.1.70`
     - как sS но с другими флагами TCP = FIN, PSH и URG флаги
     - сервер отвечает активно, полно и быстро
+
+
 - **UDP**
   - `nmap -sU -sV -T4 -v --reason 192.168.1.70`
     - перебор портов UDP 
