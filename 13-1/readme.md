@@ -121,5 +121,30 @@ Service Info: Hosts:  metasploitable.localdomain, irc.Metasploitable.LAN; OSs: U
     - редкие SMB / UDP (66,137,138 и др.) открытые порты, специфических служб (NetBIOS в основном)
     - медленная скорость работы
     - сервер отвечат медленно, в основном отбивками о недоступности порта
+    - из 1000 портов, которые проверял более 30 минут, открытыми только 19 обнаружились
+```sh
+Host is up, received arp-response (0.00098s latency).
+Not shown: 981 closed udp ports (port-unreach)
+PORT      STATE         SERVICE        REASON              VERSION
+53/udp    open          domain         udp-response ttl 64 ISC BIND 9.4.2
+68/udp    open|filtered dhcpc          no-response
+69/udp    open|filtered tftp           no-response
+111/udp   open          rpcbind        udp-response ttl 64
+137/udp   open          netbios-ns     udp-response ttl 64 Samba nmbd netbios-ns (workgroup: WORKGROUP)
+138/udp   open|filtered netbios-dgm    no-response
+643/udp   open|filtered sanity         no-response
+685/udp   open|filtered mdc-portmapper no-response
+1035/udp  open|filtered mxxrlogin      no-response
+1718/udp  open|filtered h225gatedisc   no-response
+2049/udp  open          rpcbind        udp-response ttl 64
+8000/udp  open|filtered irdmi          no-response
+19227/udp open|filtered unknown        no-response
+19728/udp open|filtered unknown        no-response
+28973/udp open|filtered unknown        no-response
+48255/udp open|filtered unknown        no-response
+55587/udp open|filtered unknown        no-response
+63420/udp open|filtered unknown        no-response
+64590/udp open|filtered unknown        no-response
+```
 
 ---
