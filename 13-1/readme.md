@@ -106,6 +106,37 @@ Service Info: Hosts:  metasploitable.localdomain, irc.Metasploitable.LAN; OSs: U
     - самый быстрый
   	- принцип полуоткрытых соединений, т.е. только ответ на первое "рукопожатие" (отправка SYN)
   	- сервер отвечает активно, полно и быстро
+```sh
+Nmap done: 1 IP address (1 host up) scanned in 11.70 seconds
+
+Host is up, received arp-response (0.0014s latency).
+Not shown: 977 closed tcp ports (reset)
+PORT     STATE SERVICE     REASON         VERSION
+21/tcp   open  ftp         syn-ack ttl 64 vsftpd 2.3.4
+22/tcp   open  ssh         syn-ack ttl 64 OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)
+23/tcp   open  telnet      syn-ack ttl 64 Linux telnetd
+25/tcp   open  smtp        syn-ack ttl 64 Postfix smtpd
+53/tcp   open  domain      syn-ack ttl 64 ISC BIND 9.4.2
+80/tcp   open  http        syn-ack ttl 64 Apache httpd 2.2.8 ((Ubuntu) DAV/2)
+111/tcp  open  rpcbind     syn-ack ttl 64 2 (RPC #100000)
+139/tcp  open  netbios-ssn syn-ack ttl 64 Samba smbd 3.X - 4.X (workgroup: WORKGROUP)
+445/tcp  open  netbios-ssn syn-ack ttl 64 Samba smbd 3.X - 4.X (workgroup: WORKGROUP)
+512/tcp  open  exec        syn-ack ttl 64 netkit-rsh rexecd
+513/tcp  open  login       syn-ack ttl 64
+514/tcp  open  tcpwrapped  syn-ack ttl 64
+1099/tcp open  java-rmi    syn-ack ttl 64 GNU Classpath grmiregistry
+1524/tcp open  bindshell   syn-ack ttl 64 Metasploitable root shell
+2049/tcp open  nfs         syn-ack ttl 64 2-4 (RPC #100003)
+2121/tcp open  ftp         syn-ack ttl 64 ProFTPD 1.3.1
+3306/tcp open  mysql       syn-ack ttl 64 MySQL 5.0.51a-3ubuntu5
+5432/tcp open  postgresql  syn-ack ttl 64 PostgreSQL DB 8.3.0 - 8.3.7
+5900/tcp open  vnc         syn-ack ttl 64 VNC (protocol 3.3)
+6000/tcp open  X11         syn-ack ttl 64 (access denied)
+6667/tcp open  irc         syn-ack ttl 64 UnrealIRCd
+8009/tcp open  ajp13       syn-ack ttl 64 Apache Jserv (Protocol v1.3)
+8180/tcp open  http        syn-ack ttl 64 Apache Tomcat/Coyote JSP engine 1.1
+
+```
 - **FIN**
   - `nmap -sF -sV -T4 -v --reason 192.168.1.70`
     - как sS но с другими флагами TCP = только TCP FIN бит
@@ -121,8 +152,10 @@ Service Info: Hosts:  metasploitable.localdomain, irc.Metasploitable.LAN; OSs: U
     - редкие SMB / UDP (66,137,138 и др.) открытые порты, специфических служб (NetBIOS в основном)
     - медленная скорость работы
     - сервер отвечат медленно, в основном отбивками о недоступности порта
-    - из 1000 портов, которые проверял более 30 минут, открытыми только 19 обнаружились
+    - из 1000 портов, которые проверял более 20 минут, открытыми только 19 обнаружились
 ```sh
+Nmap done: 1 IP address (1 host up) scanned in 1149.12 seconds
+
 Host is up, received arp-response (0.00098s latency).
 Not shown: 981 closed udp ports (port-unreach)
 PORT      STATE         SERVICE        REASON              VERSION
