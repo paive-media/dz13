@@ -103,7 +103,7 @@ Service Info: Hosts:  metasploitable.localdomain, irc.Metasploitable.LAN; OSs: U
 
 - **SYN**
   - `nmap -sS -sV -T4 -v --reason 192.168.1.70`
-  	- самый быстрый
+    - самый быстрый
   	- принцип полуоткрытых соединений, т.е. только ответ на первое "рукопожатие" (отправка SYN)
   	- сервер отвечает активно, полно и быстро
 - **FIN**
@@ -112,8 +112,8 @@ Service Info: Hosts:  metasploitable.localdomain, irc.Metasploitable.LAN; OSs: U
     - сервер отвечает активно, полно и быстро
 - **Xmas**
   - `nmap -sX -sV -T4 -v --reason 192.168.1.70`
-   - как sS но с другими флагами TCP = FIN, PSH и URG флаги
-   - сервер отвечает активно, полно и быстро
+    - как sS но с другими флагами TCP = FIN, PSH и URG флаги
+    - сервер отвечает активно, полно и быстро
 - **UDP**
   - `nmap -sU -sV -T4 -v --reason 192.168.1.70`
     - перебор портов UDP 
