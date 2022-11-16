@@ -5,11 +5,24 @@
 ### Задание 1.
 
 1. Установите **eCryptfs**.
-2. Добавьте пользователя cryptouser.
+2. Добавьте пользователя `sec_user`.
 3. Зашифруйте домашний каталог пользователя с помощью eCryptfs.
 
+--- 
 
-*В качестве ответа  пришлите снимки экрана домашнего каталога пользователя с исходными и зашифрованными данными.*  
+Команды:
+```sh
+apt install ecryptfs-utils rsync lsof
+modprobe ecryptfs
+adduser sec_user    # passphrase = 1
+ecryptfs-migrate-home -u sec_user
+```
+[Источник](https://wiki.debian.org/TransparentEncryptionForHomeFolder)
+
+Скрин:
+
+---
+
 
 ### Задание 2.
 
