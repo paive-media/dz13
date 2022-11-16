@@ -78,18 +78,72 @@ mount /dev/sda6 .secret_disk/
 
 
 
-## Дополнительные задания (со звездочкой*)
-
-Эти задания дополнительные (не обязательные к выполнению) и никак не повлияют на получение вами зачета по этому домашнему заданию. Вы можете их выполнить, если хотите глубже и/или шире разобраться в материале.
-
 ### Задание 3. *
 
 1. Установите **apparmor**.
 2. Повторите эксперимент, указанный в лекции.
 3. Отключите (удалите) apparmor.
 
+--- 
 
-*В качестве ответа пришлите снимки экрана с поэтапным выполнением задания.*
+
+[Источник 1](https://habr.com/ru/company/ruvds/blog/532988/)
+[Источник 2](https://www.simplified.guide/ubuntu/remove-apparmor)
+[Источник 3](https://help.ubuntu.ru/wiki/руководство_по_ubuntu_server/безопасность/apparmor)
+
+Команды:
+
+```sh
+# установка
+sudo apt install apparmor-profiles apparmor-utils apparmor-profiles-extra
+
+sudo apparmor_status
+sudo aa-status 
+
+# посмотрел основные профили
+ls /etc/apparmor.d/
+
+# посмотрел профиль для ping
+cat /etc/apparmor.d/bin.ping
+# посмотрел профиль для man
+cat /etc/apparmor.d/usr.bin.man
+
+# посмотрел доп. профили
+ls /usr/share/apparmor/extra-profiles/
+
+# сохранил исх версию man -> man0
+sudo cp /usr/bin/man /usr/bin/man0
+
+# испортил man <- ping
+sudo cp /bin/ping /usr/bin/man
+
+# проверки:
+man ya.ru
+man 127.0.0.1
+sudo aa-complain man
+man ya.ru
+man 127.0.0.1
+sudo aa-enforce man
+man ya.ru
+man 127.0.0.1
+
+# отключение профиля
+sudo aa-disable man
+
+# вернул исх версию man <- man0
+sudo rm /usr/bin/man
+sudo mv /usr/bin/man0 /usr/bin/man
+
+```
+
+
+Скрины:
+
+![task3 screen1](https://github.com/paive-media/dz13/blob/main/13-2/dz13-2_task3-1.png "aa status")
+![task3 screen2](https://github.com/paive-media/dz13/blob/main/13-2/dz13-2_task3-2.png "aa enforced")
+![task3 screen3](https://github.com/paive-media/dz13/blob/main/13-2/dz13-2_task3-3.png "проверка")
+
+---
 
 
 
