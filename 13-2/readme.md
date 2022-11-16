@@ -30,7 +30,52 @@ ecryptfs-migrate-home -u sec_user
 2. Создайте небольшой раздел (например, 100 Мб).
 3. Зашифруйте созданный раздел с помощью LUKS.
 
-*В качестве ответа пришлите снимки экрана с поэтапным выполнением задания.*
+--- 
+
+Команды
+
+```sh
+lsblk
+fdisk -l
+
+# подготовка
+cryptsetup -y -v --type luks2 luksFormat /dev/sda6  # passphrase = lUks
+# монтирование
+cryptsetup luksOpen /dev/sda6 disk
+ls /dev/mapper/disk
+
+# форматирование
+dd if=/dev/zero of=/dev/mapper/disk
+mkfs.ext4 /dev/mapper/disk
+
+# монтирование в папку
+mkdir .secret_disk
+mount /dev/mapper/disk .secret_disk/
+
+# проверка доступа
+cd .secret_disk
+touch 123
+ls
+
+# отключение
+umount .secret_disk
+cryptsetup luksClose disk
+
+# попытка монтирования БЕЗ дешифровки
+mount /dev/sda6 .secret_disk/
+
+```
+
+Скрины:
+
+![task2 screen1](https://github.com/paive-media/dz13/blob/main/13-2/dz13-2_task2-1.png "установка библиотеки")
+![task2 screen2](https://github.com/paive-media/dz13/blob/main/13-2/dz13-2_task2-2.png "подготовка раздела")
+![task2 screen3](https://github.com/paive-media/dz13/blob/main/13-2/dz13-2_task2-3.png "подключение диска")
+![task2 screen4](https://github.com/paive-media/dz13/blob/main/13-2/dz13-2_task2-4.png "подключение диска")
+![task2 screen5](https://github.com/paive-media/dz13/blob/main/13-2/dz13-2_task2-5.png "подключение диска")
+![task2 screen6](https://github.com/paive-media/dz13/blob/main/13-2/dz13-2_task2-6.png "проверка доступа")
+![task2 screen7](https://github.com/paive-media/dz13/blob/main/13-2/dz13-2_task2-7.png "отключенное состояние")
+
 
 
 ## Дополнительные задания (со звездочкой*)
