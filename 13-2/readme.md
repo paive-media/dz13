@@ -19,7 +19,7 @@ ecryptfs-migrate-home -u sec_user
 ```
 [Источник](https://wiki.debian.org/TransparentEncryptionForHomeFolder)
 
-Скрин:
+![task1 screen](https://github.com/paive-media/dz13/blob/main/13-2/dz13-2_task1.png "ecryptfs ex")
 
 ---
 
